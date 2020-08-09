@@ -3,7 +3,9 @@
     <div class="filter-container">
       <el-input v-model="listQuery.info" placeholder="服务名称/服务描述" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">Search</el-button>
-      <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">Add</el-button>
+      <router-link :to="'/service/service_create_http'">
+        <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit">Add</el-button>
+      </router-link>
     </div>
 
     <el-table :key="tableKey" v-loading="listLoading" element-loading-text="玩命加载中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)" :data="list" border fit highlight-current-row style="width: 100%;">
@@ -51,7 +53,9 @@
         <template slot-scope="{row,$index}">
           <el-button type="primary" size="mini">测试</el-button>
           <el-button type="primary" size="mini">统计</el-button>
-          <el-button type="primary" size="mini">修改</el-button>
+          <router-link :to="'/service/service_edit_http/'+row.id">
+            <el-button type="primary" size="mini">修改</el-button>
+          </router-link>
           <el-button size="mini" type="danger" @click="handleDelete(row,$index)">删除</el-button>
         </template>
       </el-table-column>
@@ -91,7 +95,14 @@ export default {
       tableKey: 0,
       list: {
         id: "123",
-        host: "temp",
+        service_name: "temp",
+        service_desc: "",
+        load_type: "",
+        load_type: "",
+        service_addr: "",
+        qps: "",
+        qpd: "",
+        total_node: "",
       },
       total: 0,
       listLoading: true,
@@ -156,7 +167,6 @@ export default {
             duration: 2000,
           });
         });
-      // this.list.splice(index, 1);
     },
   },
 };

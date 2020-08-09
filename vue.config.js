@@ -39,7 +39,7 @@ module.exports = {
     // before: require('./mock/mock-server.js')
     proxy: {
       [process.env.VUE_APP_BASE_API]: {
-        target: `http://172.31.50.254:8880`,
+        target: `http://192.168.231.128:8880`,
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''

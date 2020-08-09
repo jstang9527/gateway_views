@@ -15,3 +15,11 @@ export function serviceDelete(query) {
         params: query
     })
 }
+
+export function serviceAddHTTP(data) {
+    return request({
+        url: '/service/service/http',
+        method: 'post',
+        data
+    })
+}
